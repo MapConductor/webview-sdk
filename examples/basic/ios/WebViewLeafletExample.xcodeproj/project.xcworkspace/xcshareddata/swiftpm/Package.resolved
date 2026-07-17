@@ -1,0 +1,15 @@
+{
+  "originHash" : "1d8ac750d309a48315518f074739c27dbe6755992abbdb6d81638c88674dd301",
+  "pins" : [
+    {
+      "identity" : "ios-sdk-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MapConductor/ios-sdk-core",
+      "state" : {
+        "revision" : "3a0395cac9494f12cef562779210238400991b43",
+        "version" : "1.1.4"
+      }
+    }
+  ],
+  "version" : 3
+}

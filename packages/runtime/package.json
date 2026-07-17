@@ -1,0 +1,28 @@
+{
+  "name": "@mapconductor/webview-runtime",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Leaflet-backed WebView runtime, remote-controlled from native (Android/iOS) over a small postMessage bridge",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@mapconductor/js-sdk-core": "file:../../../react-sdk/js-sdk-core",
+    "@mapconductor/react-for-leaflet": "file:../../../react-sdk/react-for-leaflet",
+    "@mapconductor/webview-bridge": "file:../bridge",
+    "leaflet": "^1.9.4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.21",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.20"
+  }
+}

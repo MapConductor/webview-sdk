@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; frame-src http://localhost:5173; object-src 'none'; base-uri 'none'; form-action 'none';" />
+    <title>MapConductor WebView Bridge — Dev Harness</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        height: 100vh;
+      }
+      #panel {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        gap: 8px;
+        border-right: 1px solid #ddd;
+        overflow-y: auto;
+      }
+      #panel h1 {
+        font-size: 14px;
+        margin: 0 0 4px;
+      }
+      #panel .role {
+        font-size: 11px;
+        line-height: 1.4;
+        color: #555;
+        margin: 0 0 8px;
+      }
+      #panel button {
+        padding: 8px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      #log {
+        flex: 1;
+        margin-top: 8px;
+        padding: 8px;
+        background: #111;
+        color: #0f0;
+        font-family: ui-monospace, monospace;
+        font-size: 11px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        border-radius: 4px;
+      }
+      iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+      <h1>Simulated native side</h1>
+      <p class="role">
+        Plays the role of Android/iOS in a plain browser tab — sends the same
+        command/event envelopes a real WebView bridge would, against the
+        reference runtime in the iframe. For fast JS-side iteration without a
+        native build; it can't reproduce WebView-engine-specific rendering
+        bugs (e.g. the real-device <code>height: 100%</code> bug — see
+        <code>android-for-webview-leaflet</code>'s README), so this passing
+        isn't a substitute for on-device verification.
+      </p>
+      <button data-action="moveTokyo">moveCamera → Tokyo</button>
+      <button data-action="animateSF">animateCamera → San Francisco</button>
+      <button data-action="addMarkers">compositionMarkers (3 sample pins)</button>
+      <button data-action="clearOverlays">clearOverlays</button>
+      <button data-action="startPulse">extension: start pulseCircle</button>
+      <button data-action="stopPulse">extension: remove pulseCircle</button>
+      <div id="log"></div>
+    </div>
+    <iframe id="runtime" src="http://localhost:5173/?transport=devHarness&parentOrigin=http://localhost:5174"></iframe>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

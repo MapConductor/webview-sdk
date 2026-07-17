@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:; object-src 'none'; base-uri 'none'; form-action 'none';" />
+    <title>Android example — custom page</title>
+    <style>
+      /* Not height: 100% / 100vh on #root — some Android WebView builds fail to resolve
+         percentage/viewport-relative height against the document root (html/body/#root all
+         compute to 0px there, confirmed via getComputedStyle, even though window.innerHeight
+         and position:fixed sizing both report the real viewport size correctly). position:fixed
+         with inset:0 sizes #root against the viewport directly and isn't affected. */
+      html, body { margin: 0; padding: 0; overflow: hidden; }
+      #root { position: fixed; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

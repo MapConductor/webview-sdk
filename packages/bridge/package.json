@@ -1,0 +1,30 @@
+{
+  "name": "@mapconductor/webview-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Provider-agnostic native<->JS bridge for a MapConductor WebView runtime — works with any web provider (Leaflet, MapLibre, Google Maps, ...) that implements MapViewControllerInterface + MarkerCapable",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@mapconductor/js-sdk-core": "file:../../../react-sdk/js-sdk-core"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

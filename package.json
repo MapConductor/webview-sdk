@@ -1,0 +1,29 @@
+{
+  "name": "@mapconductor/webview-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Provider-agnostic native<->JS bridge (packages/bridge) plus a batteries-included Leaflet reference runtime (packages/runtime) for letting native map SDKs (Android/iOS) declaratively drive a web map inside a WebView, for cases native map SDKs can't cover (e.g. deck.gl-style large-data overlays, web-only plugins).",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:runtime": "npm run dev --workspace @mapconductor/webview-runtime",
+    "dev:harness": "npm run dev --workspace @mapconductor/webview-dev-harness",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "eslint . --ext .ts",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MapConductor/webview-sdk.git"
+  },
+  "author": "MapConductor",
+  "license": "Apache2"
+}
